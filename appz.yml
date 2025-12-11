@@ -1,7 +1,7 @@
     app:
         name: MySQL-Slave-test-niranjan
         code: mysql
-        notify: appzdev@cloudbourne.co
+        notify: rniranjan@ecloudcontrol.com
 
     build:
         version: 8.3
@@ -11,7 +11,7 @@
         image_template: mysql_slave-8.0
 
     deploy:
-        context: tipreprod/PROD
+        context: niranjan-ragi/PROD
         type: statefulset
         replicas: 1
         #ingress: none
@@ -48,5 +48,5 @@
         MYSQL_ROOT_PASSWORD:
           vault: MYSQL_ROOT_PASSWORD_KEY
         DB_MASTER: 172.20.22.64
-        revision : 04
+        revision : 05
      
