@@ -21,13 +21,11 @@
 
     volumes:
       - claim: mysql-data
-        class: linode-block-storage
         mount: /var/lib/mysql
         name: data
         size: 300Gi
         matchLabels: false
       - claim: mysql-backup
-        class: linode-block-storage
         mount: /appz/backup
         name: backup
         size: 300Gi
