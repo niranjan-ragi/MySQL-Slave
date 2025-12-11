@@ -22,14 +22,14 @@ volumes:
     storageClass: microk8s-hostpath
     mount: /var/lib/mysql
     name: data
-    size: 300Gi
+    size: 100Gi
     matchLabels: false
 
   - claim: mysql-backup
     storageClass: microk8s-hostpath
     mount: /appz/backup
     name: backup
-    size: 300Gi
+    size: 100Gi
     matchLabels: false
 
 properties:
