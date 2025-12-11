@@ -1,52 +1,50 @@
-    app:
-        name: MySQL-Slave-test-niranjan
-        code: mysql
-        notify: rniranjan@ecloudcontrol.com
+app:
+    name: MySQL-Slave-test-niranjan
+    code: mysql
+    notify: rniranjan@ecloudcontrol.com
 
-    build:
-        version: 8.3
-        env: DEV
-        build_file: none
-        output_files: output/*.zip
-        image_template: mysql_slave-8.0
+build:
+    version: 8.3
+    env: DEV
+    build_file: none
+    output_files: output/*.zip
+    image_template: mysql_slave-8.0
 
-    deploy:
-        context: niranjan-ragi/DEV
-        type: statefulset
-        replicas: 1
-        #ingress: none
-       # resources: x-large
-        port:
-        - 3306
+deploy:
+    context: niranjan-ragi/DEV
+    type: statefulset
+    replicas: 1
+    port:
+      - 3306
 
-    volumes:
-      - claim: mysql-data
-        class: microk8s-hostpath
-        mount: /var/lib/mysql
-        name: data
-        size: 300Gi
-        matchLabels: false
-      - claim: mysql-backup
-        class: microk8s-hostpath
-        mount: /appz/backup
-        name: backup
-        size: 300Gi
-        matchLabels: false
+volumes:
+  - claim: mysql-data
+    storageClass: microk8s-hostpath
+    mount: /var/lib/mysql
+    name: data
+    size: 300Gi
+    matchLabels: false
 
-    properties:
-        binlog_expire_logs_seconds: 2592000
-        AKAMAI_ACCESS_KEY: 
-          vault: AKAMAI_ACCESS_KEY
-        AKAMAI_SECRET_KEY: 
-          vault: AKAMAI_SECRET_KEY
-        AKAMAI_BUCKET: mysql-backup        
-        AKAMAI_ENDPOINT: https://us-iad-10.linodeobjects.com
-        AKAMAI_REGION: us-iad-10
-        MYSQL_REPLICATION_USER: repl
-        MYSQL_REPLICATION_PASSWORD:
-          vault: MYSQL_REPLICATION_PASSWORD
-        MYSQL_ROOT_PASSWORD:
-          vault: MYSQL_ROOT_PASSWORD_KEY
-        DB_MASTER: 172.20.22.64
-        revision : 07
-     
+  - claim: mysql-backup
+    storageClass: microk8s-hostpath
+    mount: /appz/backup
+    name: backup
+    size: 300Gi
+    matchLabels: false
+
+properties:
+    binlog_expire_logs_seconds: 2592000
+    AKAMAI_ACCESS_KEY:
+      vault: AKAMAI_ACCESS_KEY
+    AKAMAI_SECRET_KEY:
+      vault: AKAMAI_SECRET_KEY
+    AKAMAI_BUCKET: mysql-backup
+    AKAMAI_ENDPOINT: https://us-iad-10.linodeobjects.com
+    AKAMAI_REGION: us-iad-10
+    MYSQL_REPLICATION_USER: repl
+    MYSQL_REPLICATION_PASSWORD:
+      vault: MYSQL_REPLICATION_PASSWORD
+    MYSQL_ROOT_PASSWORD:
+      vault: MYSQL_ROOT_PASSWORD_KEY
+    DB_MASTER: 172.20.22.64
+    revision: "07"
