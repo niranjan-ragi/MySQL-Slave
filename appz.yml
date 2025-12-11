@@ -21,11 +21,13 @@
 
     volumes:
       - claim: mysql-data
+        class: microk8s-hostpath
         mount: /var/lib/mysql
         name: data
         size: 300Gi
         matchLabels: false
       - claim: mysql-backup
+        class: microk8s-hostpath
         mount: /appz/backup
         name: backup
         size: 300Gi
