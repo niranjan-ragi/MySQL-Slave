@@ -5,13 +5,13 @@
 
     build:
         version: 8.3
-        env: PROD
+        env: DEV
         build_file: none
         output_files: output/*.zip
         image_template: mysql_slave-8.0
 
     deploy:
-        context: niranjan-ragi/PROD
+        context: niranjan-ragi/DEV
         type: statefulset
         replicas: 1
         #ingress: none
