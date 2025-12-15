@@ -35,6 +35,9 @@ volumes:
 properties:
     binlog_expire_logs_seconds: 2592000
     DRY_RUN: true
+    DAILY_KEEP_DAYS: 7
+    WEEKLY_KEEP_WEEKS: 4
+    MONTHLY_KEEP_MONTHS: 12
     AKAMAI_ACCESS_KEY:
       vault: AKAMAI_ACCESS_KEY
     AKAMAI_SECRET_KEY:
