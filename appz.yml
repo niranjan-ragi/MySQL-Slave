@@ -51,4 +51,4 @@ properties:
     MYSQL_ROOT_PASSWORD:
       vault: MYSQL_ROOT_PASSWORD_KEY
     DB_MASTER: 172.20.22.64
-    revision: 10
+    revision: 11
