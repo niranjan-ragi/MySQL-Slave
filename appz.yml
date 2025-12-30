@@ -4,7 +4,7 @@ app:
     notify: rniranjan@ecloudcontrol.com
 
 build:
-    version: 8.2
+    version: 8.3
     env: DEV
     build_file: none
     output_files: output/*.zip
